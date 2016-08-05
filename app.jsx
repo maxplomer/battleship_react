@@ -59,7 +59,8 @@ var Battleship = React.createClass({
         placingMyPieces: true,
         numberOfPiecesLeft: 10,
         computerTiles: result.tiles.slice(0,25),
-        myTiles: result.tiles.slice(25,50)
+        myTiles: result.tiles.slice(25,50),
+        finished: false
       });
     }.bind(this));
   },
@@ -99,19 +100,24 @@ var Battleship = React.createClass({
   },
 
   handleComputerTileOnClick: function(event) {
-    var index = $(event.target).attr('value');
+    if (!this.state.finished) {
+      var index = $(event.target).attr('value');
 
-    $.ajax({
-      url: getApiEndpoint() + 'games/' + this.state.gameID + '/bomb_computer?token=' + this.state.token,
-      type: 'PATCH',
-      data: { index: index },
-      success: function (result) {
-        this.setState({
-          computerTiles: result.tiles.slice(0,25),
-          myTiles: result.tiles.slice(25,50)
-        });
-      }.bind(this)
-    });
+      $.ajax({
+        url: getApiEndpoint() + 'games/' + this.state.gameID + '/bomb_computer?token=' + this.state.token,
+        type: 'PATCH',
+        data: { index: index },
+        success: function (result) {
+          console.log(result);
+          this.setState({
+            computerTiles: result.tiles.slice(0,25),
+            myTiles: result.tiles.slice(25,50),
+            finished: result.finished,
+            player_won: result.player_won
+          });
+        }.bind(this)
+      });
+    }
   },
 
   componentDidUpdate: function() {
@@ -195,7 +201,12 @@ var Battleship = React.createClass({
     return (
       <div>
         <button onClick={this.showLeaderboard}>Show leaderboard</button> &nbsp;&nbsp;&nbsp;
-        <button onClick={this.destroyCurrentGame}>Destroy current game</button>
+        <button onClick={this.destroyCurrentGame}>Destroy current game</button> &nbsp;&nbsp;&nbsp;
+
+        { this.state.finished ? (
+          'The game is finished ' + { this.state.player_won ? 'and you won!' : 'and you lost!'}
+        ) : null }
+
         <br/><br/>
         
         { this.state.placingMyPieces ? 'Click tile to place your pieces' : 'Computer\'s board (Click tile to bomb)' }
