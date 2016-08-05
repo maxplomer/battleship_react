@@ -78,6 +78,8 @@ var Battleship = React.createClass({
 
   handleTileOnClick: function(event) {
     //if this.state.placingMyPieces check if still have pieces left and set to false
+    //if already have ship there don't allow
+
     var index = $(event.target).attr('value');
 
     $.ajax({
