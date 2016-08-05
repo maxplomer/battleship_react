@@ -7,7 +7,8 @@ var Battleship = React.createClass({
       myState = {
         loggedIn: false,
         showLeaderboard: false,
-        playingAGame: false
+        playingAGame: false,
+        placingMyPieces: false
       };
     } else  {
       myState = JSON.parse(storedData);
@@ -56,7 +57,8 @@ var Battleship = React.createClass({
     $.post(getApiEndpoint() + 'games?token=' + this.state.token, function (result) {
       this.setState({
         gameID: result.id,
-        playingAGame: true
+        playingAGame: true,
+        placingMyPieces: true
       });
     }.bind(this));
   },
