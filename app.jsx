@@ -108,7 +108,6 @@ var Battleship = React.createClass({
         type: 'PATCH',
         data: { index: index },
         success: function (result) {
-          console.log(result);
           this.setState({
             computerTiles: result.tiles.slice(0,25),
             myTiles: result.tiles.slice(25,50),
