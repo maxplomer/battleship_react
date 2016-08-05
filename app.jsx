@@ -161,19 +161,22 @@ var Battleship = React.createClass({
         <button onClick={this.showLeaderboard}>Show leaderboard</button>
         <button onClick={this.destroyCurrentGame}>Destroy current game</button>
         <br/><br/>
+        
         { this.state.placingMyPieces ? 'Click tile to place your pieces' : 'Computer\'s board (Click tile to bomb)' }
         <br/>
+        
         { this.state.placingMyPieces ? null : (
           <div style={{ borderTop: '1px solid blue', borderRight: '1px solid blue', width: '255px', height: '255px' }}>
             { computerPieces }
           </div>
         )}
 
-
         { this.state.placingMyPieces ? '(' + this.state.numberOfPiecesLeft + ' left)' : null }
         <br/>
+        
         { this.state.placingMyPieces ? null : 'My board' }
-        <br/>
+        <br/>        
+        
         <div style={{ borderTop: '1px solid blue', borderRight: '1px solid blue', width: '505px', height: '505px' }}>
           { pieces }
         </div>
