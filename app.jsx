@@ -67,6 +67,8 @@ var Battleship = React.createClass({
 
     //when playing game have destroy game button
 
+    //want to user current_user.games.create type syntax
+
     //this.setState({playingAGame: true});
   },
 
