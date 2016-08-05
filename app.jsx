@@ -101,6 +101,22 @@ var Battleship = React.createClass({
     }
   },
 
+  handleComputerTileOnClick: function(event) {
+    var index = $(event.target).attr('value');
+
+    $.ajax({
+      url: getApiEndpoint() + 'games/' + this.state.gameID + '/bomb_computer?token=' + this.state.token,
+      type: 'PATCH',
+      data: { index: index },
+      success: function (result) {
+        this.setState({
+          computerTiles: result.tiles.slice(0,25),
+          myTiles: result.tiles.slice(25,50)
+        });
+      }.bind(this)
+    });
+  },
+
   componentDidUpdate: function() {
     sessionStorage.setItem( 'data', JSON.stringify(this.state) );
   },
@@ -151,7 +167,7 @@ var Battleship = React.createClass({
     if (!this.state.placingMyPieces) {
       var computerPieces = [];
       for (var i=0; i<25; i++) {
-        computerPieces.push(<div value={i} onClick={this.handleTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '36px', float: 'left', textAlign: 'center', paddingTop: "14px"}}>
+        computerPieces.push(<div value={i} onClick={this.handleComputerTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '36px', float: 'left', textAlign: 'center', paddingTop: "14px"}}>
         </div>);
       }
     }
