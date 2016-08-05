@@ -29,9 +29,18 @@ var Battleship = React.createClass({
         console.log(token);
         console.log(profile["email"]);
         console.log(profile["user_id"]);
-        this.setState({loggedIn: true});
+        this.setState({
+          loggedIn: true,
+          token: token,
+          email: profile["email"],
+          user_id: profile["user_id"]
+        });
       }
     }.bind(this));
+  },
+
+  componentDidUpdate: function() {
+    sessionStorage.setItem( 'data', JSON.stringify(this.state) );
   },
 
   componentDidUpdate: function() {
