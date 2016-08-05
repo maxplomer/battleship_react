@@ -77,7 +77,6 @@ var Battleship = React.createClass({
   },
 
   handleTileOnClick: function(event) {
-    //if this.state.placingMyPieces check if still have pieces left and set to false
     if (this.state.placingMyPieces) {
       var index = $(event.target).attr('value');
 
