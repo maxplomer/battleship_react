@@ -54,14 +54,19 @@ var Battleship = React.createClass({
 
   startANewGame: function() {
     $.post(getApiEndpoint() + 'games?token=' + this.state.token, function (result) {
-      //set game Id to state
       this.setState({
         gameID: result.id,
         playingAGame: true
       });
     }.bind(this));
+  },
 
-    //when playing game have destroy game button
+  destroyCurrentGame: function() {
+    $.delete(getApiEndpoint() + 'games/' + this.state.gameID + '?token=' + this.state.token, function (result) {
+      this.setState({
+        playingAGame: false
+      });
+    }.bind(this));
   },
 
   componentDidUpdate: function() {
@@ -103,6 +108,7 @@ var Battleship = React.createClass({
       <div>
         Helloworld { this.state.message } <br/>
         <button onClick={this.showLeaderboard}>Show leaderboard</button>
+        <button onClick={this.destroyCurrentGame}>Destroy current game</button>
       </div>
     );
   }
