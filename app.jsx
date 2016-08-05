@@ -1,8 +1,15 @@
 var Battleship = React.createClass({
-  getInitialState: function() {
-    var myState = {
-      loggedIn: false
-    };
+  getInitialState: function() { 
+    var myState;
+    var storedData = sessionStorage.getItem( 'data' );
+
+    if (storedData == null) {
+      myState = {
+        loggedIn: false
+      };
+    } else  {
+      myState = JSON.parse(storedData);
+    }
 
     return myState;
   },
