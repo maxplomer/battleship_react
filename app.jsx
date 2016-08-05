@@ -109,7 +109,6 @@ var Battleship = React.createClass({
       type: 'PATCH',
       data: { index: index },
       success: function (result) {
-        console.log(result);
         this.setState({
           computerTiles: result.tiles.slice(0,25),
           myTiles: result.tiles.slice(25,50)
@@ -168,11 +167,11 @@ var Battleship = React.createClass({
     if (!this.state.placingMyPieces) {
       var computerPieces = [];
       for (var i=0; i<25; i++) {
-        if (!this.state.myTiles[i].visited) {
+        if (!this.state.computerTiles[i].visited) {
           computerPieces.push(<div value={i} onClick={this.handleComputerTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '36px', float: 'left', textAlign: 'center', paddingTop: "14px"}}>
           </div>);
         } else {
-          if (this.state.myTiles[i].ship) {
+          if (this.state.computerTiles[i].ship) {
             computerPieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '36px', float: 'left', textAlign: 'center', paddingTop: "14px", backgroundColor: 'grey'}}>
               <span style={{fontSize: "30px"}}>🚢</span>
             </div>);
