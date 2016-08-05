@@ -148,6 +148,14 @@ var Battleship = React.createClass({
       }
     }
 
+    if (!this.state.placingMyPieces) {
+      var computerPieces = [];
+      for (var i=0; i<25; i++) {
+        computerPieces.push(<div value={i} onClick={this.handleTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '36px', float: 'left', textAlign: 'center', paddingTop: "14px"}}>
+        </div>);
+      }
+    }
+
     return (
       <div>
         <button onClick={this.showLeaderboard}>Show leaderboard</button>
@@ -157,7 +165,7 @@ var Battleship = React.createClass({
         <br/>
         { this.state.placingMyPieces ? null : (
           <div style={{ borderTop: '1px solid blue', borderRight: '1px solid blue', width: '255px', height: '255px' }}>
-
+            { computerPieces }
           </div>
         )}
 
