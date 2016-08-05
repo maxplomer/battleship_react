@@ -115,6 +115,12 @@ var Battleship = React.createClass({
         Helloworld { this.state.message } <br/>
         <button onClick={this.showLeaderboard}>Show leaderboard</button>
         <button onClick={this.destroyCurrentGame}>Destroy current game</button>
+        <br/><br/>
+        { this.state.placingMyPieces ? 'Place your pieces' : null }
+        <br/><br/>
+        <div style={{ border: '1px solid yellow', width: '500px', height: '500px' }}>
+
+        </div>
       </div>
     );
   }
