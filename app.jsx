@@ -6,7 +6,8 @@ var Battleship = React.createClass({
     if (storedData == null) {
       myState = {
         loggedIn: false,
-        showLeaderboard: false
+        showLeaderboard: false,
+        playingAGame: false
       };
     } else  {
       myState = JSON.parse(storedData);
@@ -55,6 +56,10 @@ var Battleship = React.createClass({
     this.setState({showLeaderboard: false});
   },
 
+  startANewGame: function() {
+    this.setState({playingAGame: true});
+  },
+
   componentDidUpdate: function() {
     sessionStorage.setItem( 'data', JSON.stringify(this.state) );
   },
@@ -78,6 +83,14 @@ var Battleship = React.createClass({
       return (
         <div>
           <button onClick={this.login}>Login</button>
+        </div>
+      );
+    }
+
+    if (!this.state.playingAGame) {
+      return (
+        <div>
+          <button onClick={this.startANewGame}>Start a new game</button>
         </div>
       );
     }
