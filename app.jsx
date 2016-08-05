@@ -61,17 +61,15 @@ var Battleship = React.createClass({
   },
 
   startANewGame: function() {
-    $.post(getApiEndpoint() + 'games?token=' + token, function (result) {
-      console.log(result);
-    });
-
-    //get back game Id, set to state
+    $.post(getApiEndpoint() + 'games?token=' + this.state.token, function (result) {
+      //set game Id to state
+      this.setState({
+        gameID: result.id,
+        playingAGame: true
+      });
+    }.bind(this));
 
     //when playing game have destroy game button
-
-    //want to user current_user.games.create type syntax
-
-    //this.setState({playingAGame: true});
   },
 
   testSecuredPing: function() {
