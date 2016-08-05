@@ -61,7 +61,9 @@ var Battleship = React.createClass({
   },
 
   startANewGame: function() {
-
+    $.post(getApiEndpoint() + 'games?token=' + token, function (result) {
+      console.log(result);
+    });
 
     //get back game Id, set to state
 
