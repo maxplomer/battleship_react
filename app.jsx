@@ -61,7 +61,13 @@ var Battleship = React.createClass({
   },
 
   startANewGame: function() {
-    this.setState({playingAGame: true});
+
+
+    //get back game Id, set to state
+
+    //when playing game have destroy game button
+
+    //this.setState({playingAGame: true});
   },
 
   testSecuredPing: function() {
