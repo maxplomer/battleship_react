@@ -172,7 +172,7 @@ var Battleship = React.createClass({
           </div>);
         } else {
           if (this.state.computerTiles[i].ship) {
-            computerPieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '36px', float: 'left', textAlign: 'center', paddingTop: "14px", backgroundColor: 'grey'}}>
+            computerPieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '41px', float: 'left', textAlign: 'center', paddingTop: "9px", backgroundColor: 'red'}}>
               <span style={{fontSize: "30px"}}>🚢</span>
             </div>);
           } else {
