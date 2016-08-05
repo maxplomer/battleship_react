@@ -155,13 +155,24 @@ var Battleship = React.createClass({
 
     var pieces = [];
     for (var i=0; i<25; i++) {
-      if (this.state.myTiles[i].ship) {
-        pieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '72px', float: 'left', textAlign: 'center', paddingTop: "28px"}}>
-          <span style={{fontSize: "40px"}}>🚢</span>
-        </div>);
+      if (!this.state.myTiles[i].visited) {
+        if (this.state.myTiles[i].ship) {
+          pieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '72px', float: 'left', textAlign: 'center', paddingTop: "28px"}}>
+            <span style={{fontSize: "40px"}}>🚢</span>
+          </div>);
+        } else {
+          pieces.push(<div value={i} onClick={this.handleTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '100px', float: 'left'}}>
+          </div>);
+        }
       } else {
-        pieces.push(<div value={i} onClick={this.handleTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '100px', float: 'left', textAlign: 'center'}}>
-        </div>);
+        if (this.state.myTiles[i].ship) {
+          pieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '72px', float: 'left', textAlign: 'center', paddingTop: "28px", backgroundColor: 'red'}}>
+            <span style={{fontSize: "40px"}}>🚢</span>
+          </div>);
+        } else {
+          pieces.push(<div value={i} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '100px', float: 'left', backgroundColor: 'grey'}}>
+          </div>);
+        }
       }
     }
 
@@ -169,7 +180,7 @@ var Battleship = React.createClass({
       var computerPieces = [];
       for (var i=0; i<25; i++) {
         if (!this.state.computerTiles[i].visited) {
-          computerPieces.push(<div value={i} onClick={this.handleComputerTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '50px', float: 'left', textAlign: 'center'}}>
+          computerPieces.push(<div value={i} onClick={this.handleComputerTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '50px', float: 'left'}}>
           </div>);
         } else {
           if (this.state.computerTiles[i].ship) {
@@ -177,7 +188,7 @@ var Battleship = React.createClass({
               <span style={{fontSize: "30px"}}>🚢</span>
             </div>);
           } else {
-            computerPieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '50px', float: 'left', textAlign: 'center', backgroundColor: 'grey'}}>
+            computerPieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '50px', float: 'left', backgroundColor: 'grey'}}>
             </div>);
           }
         }
