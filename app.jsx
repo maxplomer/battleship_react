@@ -13,7 +13,10 @@ var Battleship = React.createClass({
         message: result
       });
     }.bind(this));
+  },
 
+  login: function() {
+    console.log('login');
     var domain = 'maxplomer.auth0.com';
     var clientID = '0EauSF7D5vmXS5L6IR9X06LVrpAnYlpm';
 
@@ -26,14 +29,23 @@ var Battleship = React.createClass({
         console.log(token);
         console.log(profile["email"]);
         console.log(profile["user_id"]);
+        this.setState({loggedIn: true});
       }
-    });
+    }.bind(this));
   },
 
   componentDidUpdate: function() {
   },
 
   render: function() {
+    if (!this.state.logginIn) {
+      return (
+        <div>
+          <button onPress={this.login}>Login</button>
+        </div>
+      );
+    }
+
     return (
       <div>
         Helloworld { this.state.message }
