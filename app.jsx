@@ -202,6 +202,8 @@ var Battleship = React.createClass({
       <div>
         <button onClick={this.showLeaderboard}>Show leaderboard</button> &nbsp;&nbsp;&nbsp;
         <button onClick={this.destroyCurrentGame}>Destroy current game</button> &nbsp;&nbsp;&nbsp;
+        
+        { this.state.finished ? (<button onClick={this.startANewGame} style={{marginRight: '20px'}}>Start a new game</button>) : null }
 
         { this.state.finished && this.state.player_won ? 'The game is finished and you won!' : null }
         { this.state.finished && !this.state.player_won ? 'The game is finished and you lost!' : null }
