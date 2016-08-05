@@ -50,9 +50,6 @@ var Battleship = React.createClass({
     sessionStorage.setItem( 'data', JSON.stringify(this.state) );
   },
 
-  componentDidUpdate: function() {
-  },
-
   render: function() {
     if (!this.state.loggedIn) {
       return (
