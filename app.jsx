@@ -60,6 +60,10 @@ var Battleship = React.createClass({
     this.setState({playingAGame: true});
   },
 
+  testSecuredPing: function() {
+
+  },
+
   componentDidUpdate: function() {
     sessionStorage.setItem( 'data', JSON.stringify(this.state) );
   },
@@ -99,6 +103,7 @@ var Battleship = React.createClass({
       <div>
         Helloworld { this.state.message } <br/>
         <button onClick={this.showLeaderboard}>Show leaderboard</button>
+        <button onClick={this.testSecuredPing}>Test secured ping</button>
       </div>
     );
   }
