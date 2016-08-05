@@ -7,7 +7,7 @@ var Battleship = React.createClass({
   },
 
   componentDidMount: function() {
-    this.serverRequest = $.get('http://localhost:3001/ping', function (result) {
+    $.get(getApiEndpoint() + 'ping', function (result) {
       this.setState({
         message: result
       });
@@ -25,5 +25,15 @@ var Battleship = React.createClass({
     );
   }
 });
+
+
+var getApiEndpoint = function() {
+  // OPTION 1 : Uncomment for running locally
+  return 'http://localhost:3001/';
+
+  // Option 2: Uncomment for running in production
+  // return 'https://battleship-maxplomer.herokuapp.com/';
+}
+
 
 React.render(<Battleship/>, document.body);
