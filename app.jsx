@@ -33,9 +33,7 @@ var Battleship = React.createClass({
         console.log(profile["user_id"]);
         this.setState({
           loggedIn: true,
-          token: token,
-          email: profile["email"],
-          user_id: profile["user_id"]
+          token: token
         });
 
         $.post(getApiEndpoint() + 'users?token=' + token, function (result) {
