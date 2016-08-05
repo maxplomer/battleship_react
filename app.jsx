@@ -70,7 +70,9 @@ var Battleship = React.createClass({
       type: 'DELETE',
       success: function (result) {
         this.setState({
-          playingAGame: false
+          playingAGame: false,
+          computerTiles: result.tiles.slice(0,25),
+          myTiles: result.tiles.slice(25,50)
         });
       }.bind(this)
     });
@@ -87,8 +89,8 @@ var Battleship = React.createClass({
       type: 'PATCH',
       data: { index: index },
       success: function (result) {
-        console.log(result.tiles.slice(25,50));
         this.setState({
+          //computerTiles: result.tiles.slice(0,25),
           myTiles: result.tiles.slice(25,50)
         });
       }.bind(this)
