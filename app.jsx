@@ -38,7 +38,7 @@ var Battleship = React.createClass({
   },
 
   render: function() {
-    if (!this.state.logginIn) {
+    if (!this.state.loggedIn) {
       return (
         <div>
           <button onClick={this.login}>Login</button>
