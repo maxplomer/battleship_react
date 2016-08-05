@@ -110,16 +110,22 @@ var Battleship = React.createClass({
       );
     }
 
+    var pieces = []
+
+    for (var i=0; i<25; i++) {
+      pieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '100px', float: 'left'}}></div>);
+    }
+
     return (
       <div>
         Helloworld { this.state.message } <br/>
         <button onClick={this.showLeaderboard}>Show leaderboard</button>
         <button onClick={this.destroyCurrentGame}>Destroy current game</button>
         <br/><br/>
-        { this.state.placingMyPieces ? 'Place your pieces' : null }
+        { this.state.placingMyPieces ? 'Click tile to place your pieces' : null }
         <br/><br/>
-        <div style={{ border: '1px solid yellow', width: '500px', height: '500px' }}>
-
+        <div style={{ borderTop: '1px solid blue', borderRight: '1px solid blue', width: '505px', height: '505px' }}>
+          { pieces }
         </div>
       </div>
     );
