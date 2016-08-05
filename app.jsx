@@ -59,7 +59,9 @@ var Battleship = React.createClass({
         gameID: result.id,
         playingAGame: true,
         placingMyPieces: true,
-        numberOfPiecesLeft: 10
+        numberOfPiecesLeft: 10,
+        computerTiles: result.tiles.slice(0,25),
+        myTiles: result.tiles.slice(25,50)
       });
     }.bind(this));
   },
@@ -70,9 +72,7 @@ var Battleship = React.createClass({
       type: 'DELETE',
       success: function (result) {
         this.setState({
-          playingAGame: false,
-          computerTiles: result.tiles.slice(0,25),
-          myTiles: result.tiles.slice(25,50)
+          playingAGame: false
         });
       }.bind(this)
     });
@@ -134,6 +134,7 @@ var Battleship = React.createClass({
 
     var pieces = [];
     for (var i=0; i<25; i++) {
+      console.log(this.state.myTiles);
       pieces.push(<div value={i} onClick={this.handleTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '72px', float: 'left', textAlign: 'center', paddingTop: "28px"}}>
         <span style={{fontSize: "40px"}}>🚢</span>
       </div>);
