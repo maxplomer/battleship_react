@@ -48,7 +48,8 @@ var Battleship = React.createClass({
 
     return (
       <div>
-        Helloworld { this.state.message }
+        Helloworld { this.state.message } <br/>
+        <button onClick={this.showLeaderboard}>Show leaderboard</button>
       </div>
     );
   }
