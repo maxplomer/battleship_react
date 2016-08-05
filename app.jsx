@@ -75,6 +75,10 @@ var Battleship = React.createClass({
     });
   },
 
+  handleTileOnClick: function() {
+    console.log('hello')
+  },
+
   componentDidUpdate: function() {
     sessionStorage.setItem( 'data', JSON.stringify(this.state) );
   },
@@ -113,7 +117,7 @@ var Battleship = React.createClass({
     var pieces = []
 
     for (var i=0; i<25; i++) {
-      pieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '100px', float: 'left'}}></div>);
+      pieces.push(<div onClick={this.handleTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '100px', float: 'left'}}></div>);
     }
 
     return (
