@@ -5,7 +5,8 @@ var Battleship = React.createClass({
 
     if (storedData == null) {
       myState = {
-        loggedIn: false
+        loggedIn: false,
+        showLeaderboard: false
       };
     } else  {
       myState = JSON.parse(storedData);
@@ -46,11 +47,33 @@ var Battleship = React.createClass({
     }.bind(this));
   },
 
+  showLeaderboard: function() {
+    this.setState({showLeaderboard: true});
+  },
+
+  hideLeaderboard: function() {
+    this.setState({showLeaderboard: false});
+  },
+
   componentDidUpdate: function() {
     sessionStorage.setItem( 'data', JSON.stringify(this.state) );
   },
 
   render: function() {
+    if (this.state.showLeaderboard) {
+      return (
+        <div>
+          <button onClick={this.hideLeaderboard}>Hide leaderboard</button>
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+          </ul>
+        </div>
+      );
+    }
+
     if (!this.state.loggedIn) {
       return (
         <div>
