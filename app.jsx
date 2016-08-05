@@ -44,6 +44,10 @@ var Battleship = React.createClass({
           email: profile["email"],
           user_id: profile["user_id"]
         });
+
+        $.post(getApiEndpoint() + 'users?token=' + token, function (result) {
+          console.log(result);
+        });
       }
     }.bind(this));
   },
