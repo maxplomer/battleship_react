@@ -16,14 +16,6 @@ var Battleship = React.createClass({
     return myState;
   },
 
-  componentDidMount: function() {
-    $.get(getApiEndpoint() + 'ping', function (result) {
-      this.setState({
-        message: result
-      });
-    }.bind(this));
-  },
-
   login: function() {
     console.log('login');
     var domain = 'maxplomer.auth0.com';
@@ -72,10 +64,6 @@ var Battleship = React.createClass({
     //when playing game have destroy game button
   },
 
-  testSecuredPing: function() {
-
-  },
-
   componentDidUpdate: function() {
     sessionStorage.setItem( 'data', JSON.stringify(this.state) );
   },
@@ -115,7 +103,6 @@ var Battleship = React.createClass({
       <div>
         Helloworld { this.state.message } <br/>
         <button onClick={this.showLeaderboard}>Show leaderboard</button>
-        <button onClick={this.testSecuredPing}>Test secured ping</button>
       </div>
     );
   }
