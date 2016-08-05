@@ -77,8 +77,20 @@ var Battleship = React.createClass({
   },
 
   handleTileOnClick: function(event) {
+    //if this.state.placingMyPieces check if still have pieces left and set to false
     var index = $(event.target).attr('value');
-    console.log(index);
+
+    $.ajax({
+      url: getApiEndpoint() + 'games/' + this.state.gameID + '/place_ship?token=' + this.state.token,
+      type: 'PATCH',
+      data: { index: index },
+      success: function (result) {
+        console.log(result)
+        // this.setState({
+        //   myTiles: result
+        // });
+      }.bind(this)
+    });
   },
 
   componentDidUpdate: function() {
