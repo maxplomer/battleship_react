@@ -62,11 +62,15 @@ var Battleship = React.createClass({
   },
 
   destroyCurrentGame: function() {
-    $.delete(getApiEndpoint() + 'games/' + this.state.gameID + '?token=' + this.state.token, function (result) {
-      this.setState({
-        playingAGame: false
-      });
-    }.bind(this));
+    $.ajax({
+      url: getApiEndpoint() + 'games/' + this.state.gameID + '?token=' + this.state.token,
+      type: 'DELETE',
+      success: function (result) {
+        this.setState({
+          playingAGame: false
+        });
+      }.bind(this)
+    });
   },
 
   componentDidUpdate: function() {
