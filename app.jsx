@@ -58,7 +58,8 @@ var Battleship = React.createClass({
       this.setState({
         gameID: result.id,
         playingAGame: true,
-        placingMyPieces: true
+        placingMyPieces: true,
+        numberOfPiecesLeft: 10
       });
     }.bind(this));
   },
@@ -128,6 +129,8 @@ var Battleship = React.createClass({
         <button onClick={this.destroyCurrentGame}>Destroy current game</button>
         <br/><br/>
         { this.state.placingMyPieces ? 'Click tile to place your pieces' : null }
+        <br/>
+        { this.state.placingMyPieces ? '(' + this.state.numberOfPiecesLeft + ' left)' : null }
         <br/><br/>
         <div style={{ borderTop: '1px solid blue', borderRight: '1px solid blue', width: '505px', height: '505px' }}>
           { pieces }
