@@ -134,10 +134,14 @@ var Battleship = React.createClass({
 
     var pieces = [];
     for (var i=0; i<25; i++) {
-      console.log(this.state.myTiles);
-      pieces.push(<div value={i} onClick={this.handleTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '72px', float: 'left', textAlign: 'center', paddingTop: "28px"}}>
-        <span style={{fontSize: "40px"}}>🚢</span>
-      </div>);
+      if (this.state.myTiles[i].ship) {
+        pieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '72px', float: 'left', textAlign: 'center', paddingTop: "28px"}}>
+          <span style={{fontSize: "40px"}}>🚢</span>
+        </div>);
+      } else {
+        pieces.push(<div value={i} onClick={this.handleTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '100px', height: '72px', float: 'left', textAlign: 'center', paddingTop: "28px"}}>
+        </div>);
+      }
     }
 
     return (
