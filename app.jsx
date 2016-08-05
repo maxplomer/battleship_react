@@ -80,19 +80,25 @@ var Battleship = React.createClass({
 
   handleTileOnClick: function(event) {
     //if this.state.placingMyPieces check if still have pieces left and set to false
-    var index = $(event.target).attr('value');
+    if (this.state.placingMyPieces) {
+      var index = $(event.target).attr('value');
 
-    $.ajax({
-      url: getApiEndpoint() + 'games/' + this.state.gameID + '/place_ship?token=' + this.state.token,
-      type: 'PATCH',
-      data: { index: index },
-      success: function (result) {
-        this.setState({
-          //computerTiles: result.tiles.slice(0,25),
-          myTiles: result.tiles.slice(25,50)
-        });
-      }.bind(this)
-    });
+      $.ajax({
+        url: getApiEndpoint() + 'games/' + this.state.gameID + '/place_ship?token=' + this.state.token,
+        type: 'PATCH',
+        data: { index: index },
+        success: function (result) {
+          var numberOfPiecesLeft = this.state.numberOfPiecesLeft - 1;
+          var placingMyPieces = (numberOfPiecesLeft > 0);
+
+          this.setState({
+            myTiles: result.tiles.slice(25,50),
+            numberOfPiecesLeft: numberOfPiecesLeft,
+            placingMyPieces: placingMyPieces
+          });
+        }.bind(this)
+      });
+    }
   },
 
   componentDidUpdate: function() {
