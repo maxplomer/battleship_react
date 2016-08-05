@@ -1,6 +1,7 @@
 var Battleship = React.createClass({
   getInitialState: function() {
     var myState = {
+      loggedIn: false
     };
 
     return myState;
@@ -12,6 +13,21 @@ var Battleship = React.createClass({
         message: result
       });
     }.bind(this));
+
+    var domain = 'maxplomer.auth0.com';
+    var clientID = '0EauSF7D5vmXS5L6IR9X06LVrpAnYlpm';
+
+    var lock = new Auth0Lock(clientID, domain);
+    lock.show({
+      focusInput: false,
+      popup: true,
+    }, function (err, profile, token) {
+      if (err === null) {
+        console.log(token);
+        console.log(profile["email"]);
+        console.log(profile["user_id"]);
+      }
+    });
   },
 
   componentDidUpdate: function() {
