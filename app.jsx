@@ -124,10 +124,10 @@ var Battleship = React.createClass({
 
 var getApiEndpoint = function() {
   // OPTION 1 : Uncomment for running locally
-  //return 'http://localhost:3001/';
+  return 'http://localhost:3001/';
 
   // Option 2: Uncomment for running in production
-  return 'https://battleship-maxplomer.herokuapp.com/';
+  //return 'https://battleship-maxplomer.herokuapp.com/';
 }
 
 
