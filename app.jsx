@@ -172,7 +172,7 @@ var Battleship = React.createClass({
             <span style={{fontSize: "40px"}}>🚢</span>
           </div>);
         } else {
-          pieces.push(<div value={i} className="player-tile" style={{backgroundColor: 'grey'}}></div>);
+          pieces.push(<div className="player-tile" style={{backgroundColor: 'grey'}}></div>);
         }
       }
     }
