@@ -18,7 +18,6 @@ var Battleship = React.createClass({
   },
 
   login: function() {
-    console.log('login');
     var domain = 'maxplomer.auth0.com';
     var clientID = '0EauSF7D5vmXS5L6IR9X06LVrpAnYlpm';
 
@@ -28,23 +27,24 @@ var Battleship = React.createClass({
       popup: true,
     }, function (err, profile, token) {
       if (err === null) {
-        console.log(token);
-        console.log(profile["email"]);
-        console.log(profile["user_id"]);
         this.setState({
           loggedIn: true,
           token: token
         });
 
-        $.post(getApiEndpoint() + 'users?token=' + token, {email: profile["email"]}, function (result) {
-          console.log(result);
-        });
+        $.post(getApiEndpoint() + 'users?token=' + token, {email: profile["email"]});
       }
     }.bind(this));
   },
 
   showLeaderboard: function() {
-    this.setState({showLeaderboard: true});
+    $.get(getApiEndpoint() + 'users', function (result) {
+      console.log(result);
+      this.setState({
+        leaderboard: result,
+        showLeaderboard: true
+      });
+    }.bind(this));
   },
 
   hideLeaderboard: function() {
@@ -80,7 +80,6 @@ var Battleship = React.createClass({
   handleTileOnClick: function(event) {
     if (this.state.placingMyPieces) {
       var index = $(event.target).attr('value');
-      console.log(index)
 
       $.ajax({
         url: getApiEndpoint() + 'games/' + this.state.gameID + '/place_ship?token=' + this.state.token,
