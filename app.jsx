@@ -163,9 +163,9 @@ var Battleship = React.createClass({
     for (var i=0; i<25; i++) {
       if (this.state.myTiles[i].visited) {
         if (this.state.myTiles[i].ship) {
-          pieces.push(<div className="player-tile-ship" style={{ backgroundColor: 'red' }}>🚢</div>);
+          pieces.push(<div className="player-tile-ship visited">🚢</div>);
         } else {
-          pieces.push(<div className="player-tile" style={{ backgroundColor: 'grey' }}></div>);
+          pieces.push(<div className="player-tile visited"></div>);
         }
       } else {
         if (this.state.myTiles[i].ship) {
