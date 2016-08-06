@@ -124,9 +124,9 @@ var Battleship = React.createClass({
         <div>
           <button onClick={ this.hideLeaderboard }>Hide leaderboard</button>
           <ul>
-            {this.state.leaderboard.map(function(listValue){
+            { this.state.leaderboard.map(function(listValue){
               return <li>{ listValue.email }  ({ listValue.time_took_to_win } sec)</li>;
-            })}
+            }) }
           </ul>
         </div>
       );
