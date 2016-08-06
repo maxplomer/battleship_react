@@ -179,14 +179,14 @@ var Battleship = React.createClass({
     if (!this.state.placingMyPieces) {
       var computerPieces = [];
       for (var i=0; i<25; i++) {
-        if (!this.state.computerTiles[i].visited) {
-          computerPieces.push(<div onClick={ this.handleComputerTileOnClick.bind(null, i) } className="computer-tile"></div>);
-        } else {
+        if (this.state.computerTiles[i].visited) {
           if (this.state.computerTiles[i].ship) {
             computerPieces.push(<div className="computer-tile-ship">🚢</div>);
           } else {
-            computerPieces.push(<div className="computer-tile" style={{ backgroundColor: 'grey' }}></div>);
+            computerPieces.push(<div className="computer-tile visited"></div>);
           }
+        } else {
+          computerPieces.push(<div onClick={ this.handleComputerTileOnClick.bind(null, i) } className="computer-tile"></div>);
         }
       }
     }
