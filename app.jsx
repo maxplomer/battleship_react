@@ -85,7 +85,7 @@ var Battleship = React.createClass({
   },
 
   handleTileOnClick: function(index) {
-    if (this.state.placingMyPieces) {
+    if (this.state.placingMyPieces && !this.state.myTiles[index].ship) {
       $.ajax({
         url: getApiEndpoint() + 'games/' + this.state.gameID + '/place_ship?token=' + this.state.token,
         type: 'PATCH',
@@ -105,7 +105,7 @@ var Battleship = React.createClass({
   },
 
   handleComputerTileOnClick: function(index) {
-    if (!this.state.finished) {
+    if (!this.state.finished && !this.state.computerTiles[index].visited) {
       $.ajax({
         url: getApiEndpoint() + 'games/' + this.state.gameID + '/bomb_computer?token=' + this.state.token,
         type: 'PATCH',
