@@ -210,7 +210,7 @@ var Battleship = React.createClass({
         <br/>
         
         { this.state.placingMyPieces ? null : (
-          <div style={{ borderTop: '1px solid blue', borderRight: '1px solid blue', width: '255px', height: '255px' }}>
+          <div className="computer-tiles-holder">
             { computerPieces }
           </div>
         )}
@@ -221,7 +221,7 @@ var Battleship = React.createClass({
         { this.state.placingMyPieces ? null : 'My board' }
         <br/>        
         
-        <div style={{ borderTop: '1px solid blue', borderRight: '1px solid blue', width: '505px', height: '505px' }}>
+        <div className="player-tiles-holder">
           { pieces }
         </div>
       </div>
