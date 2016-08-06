@@ -181,16 +181,14 @@ var Battleship = React.createClass({
       var computerPieces = [];
       for (var i=0; i<25; i++) {
         if (!this.state.computerTiles[i].visited) {
-          computerPieces.push(<div value={i} onClick={this.handleComputerTileOnClick} style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '50px', float: 'left'}}>
-          </div>);
+          computerPieces.push(<div value={i} onClick={this.handleComputerTileOnClick} className="computer-tile"></div>);
         } else {
           if (this.state.computerTiles[i].ship) {
-            computerPieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '41px', float: 'left', textAlign: 'center', paddingTop: "9px", backgroundColor: 'red'}}>
+            computerPieces.push(<div className="computer-tile-ship">
               <span style={{fontSize: "30px"}}>🚢</span>
             </div>);
           } else {
-            computerPieces.push(<div style={{borderBottom: '1px solid blue', borderLeft: '1px solid blue', width: '50px', height: '50px', float: 'left', backgroundColor: 'grey'}}>
-            </div>);
+            computerPieces.push(<div className="computer-tile" style={{backgroundColor: 'grey'}}></div>);
           }
         }
       }
