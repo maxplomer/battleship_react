@@ -152,7 +152,11 @@ var Battleship = React.createClass({
     var pieces = [];
 
     // this.state.myTiles.map(function(listValue){
-      
+    //   if (listValue.ship) {
+    //     pieces.push(<div className={"player-tile-ship " + (listValue.visited ? 'visited' : null)}>🚢</div>);
+    //   } else {
+    //     pieces.push(<div className={"player-tile " + (listValue.visited ? 'visited' : null)}></div>);
+    //   }
     // });
 
 
