@@ -150,31 +150,14 @@ var Battleship = React.createClass({
     }
 
     var pieces = [];
-
-    // this.state.myTiles.map(function(listValue){
-    //   if (listValue.ship) {
-    //     pieces.push(<div className={"player-tile-ship " + (listValue.visited ? 'visited' : null)}>🚢</div>);
-    //   } else {
-    //     pieces.push(<div className={"player-tile " + (listValue.visited ? 'visited' : null)}></div>);
-    //   }
-    // });
-
-
-    for (var i=0; i<25; i++) {
-      if (this.state.myTiles[i].visited) {
-        if (this.state.myTiles[i].ship) {
-          pieces.push(<div className="player-tile-ship visited">🚢</div>);
-        } else {
-          pieces.push(<div className="player-tile visited"></div>);
-        }
-      } else {
-        if (this.state.myTiles[i].ship) {
-          pieces.push(<div className="player-tile-ship">🚢</div>);
-        } else {
-          pieces.push(<div onClick={ this.handleTileOnClick.bind(null, i) } className="player-tile"></div>);
-        }
-      }
-    }
+    this.state.myTiles.map(function(listValue, i){
+      pieces.push(
+        <div className={"player-tile" + (listValue.ship ? '-ship' : '') + (listValue.visited ? ' visited' : '')}
+          onClick={ this.handleTileOnClick.bind(null, i) }>
+          { listValue.ship ? '🚢' : null }
+        </div>
+      );
+    }.bind(this));
 
     if (!this.state.placingMyPieces) {
       var computerPieces = [];
