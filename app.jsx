@@ -143,7 +143,7 @@ var Battleship = React.createClass({
     if (!this.state.playingAGame) {
       return (
         <div>
-          <button onClick={this.showLeaderboard}>Show leaderboard</button> &nbsp;&nbsp;&nbsp;
+          <button onClick={this.showLeaderboard}>Show leaderboard</button>
           <button onClick={this.startANewGame}>Start a new game</button>
         </div>
       );
@@ -189,11 +189,11 @@ var Battleship = React.createClass({
 
     return (
       <div>
-        <button onClick={this.showLeaderboard}>Show leaderboard</button> &nbsp;&nbsp;&nbsp;
+        <button onClick={this.showLeaderboard}>Show leaderboard</button>
         
         { this.state.finished ? 
-          (<button onClick={this.startANewGame} style={{marginRight: '20px'}}>Start a new game</button>) : 
-          (<button onClick={this.destroyCurrentGame} style={{marginRight: '20px'}}>Destroy current game</button>) 
+          (<button onClick={this.startANewGame}>Start a new game</button>) : 
+          (<button onClick={this.destroyCurrentGame}>Destroy current game</button>) 
         }
 
         { this.state.finished && this.state.player_won ? 'The game is finished and you won!' : null }
