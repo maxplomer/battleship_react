@@ -39,7 +39,6 @@ var Battleship = React.createClass({
 
   showLeaderboard: function() {
     $.get(getApiEndpoint() + 'users', function (result) {
-      console.log(result);
       this.setState({
         leaderboard: result,
         showLeaderboard: true
@@ -121,15 +120,13 @@ var Battleship = React.createClass({
 
   render: function() {
     if (this.state.showLeaderboard) {
-      var users = []
-      for (var i=0; i<this.state.leaderboard.length; i++) {
-        users.push(<li>{ this.state.leaderboard[i].email }  ({ this.state.leaderboard[i].time_took_to_win } sec)</li>);
-      }
       return (
         <div>
           <button onClick={this.hideLeaderboard}>Hide leaderboard</button>
           <ul>
-            { users }
+            {this.state.leaderboard.map(function(listValue){
+              return <li>{listValue.email}  ({ listValue.time_took_to_win } sec)</li>;
+            })}
           </ul>
         </div>
       );
