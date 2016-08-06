@@ -125,14 +125,15 @@ var Battleship = React.createClass({
 
   render: function() {
     if (this.state.showLeaderboard) {
+      var users = []
+      for (var i=0; i<this.state.leaderboard.length; i++) {
+        users.push(<li>{ this.state.leaderboard[i].email }  ({ this.state.leaderboard[i].time_took_to_win } sec)</li>);
+      }
       return (
         <div>
           <button onClick={this.hideLeaderboard}>Hide leaderboard</button>
           <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
+            { users }
           </ul>
         </div>
       );
