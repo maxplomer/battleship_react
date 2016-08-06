@@ -161,9 +161,7 @@ var Battleship = React.createClass({
         }
       } else {
         if (this.state.myTiles[i].ship) {
-          pieces.push(<div className="player-tile-ship">
-            <span style={{ fontSize: "40px" }}>🚢</span>
-          </div>);
+          pieces.push(<div className="player-tile-ship">🚢</div>);
         } else {
           pieces.push(<div onClick={ this.handleTileOnClick.bind(null, i) } className="player-tile"></div>);
         }
@@ -177,9 +175,7 @@ var Battleship = React.createClass({
           computerPieces.push(<div onClick={ this.handleComputerTileOnClick.bind(null, i) } className="computer-tile"></div>);
         } else {
           if (this.state.computerTiles[i].ship) {
-            computerPieces.push(<div className="computer-tile-ship">
-              <span style={{ fontSize: "30px" }}>🚢</span>
-            </div>);
+            computerPieces.push(<div className="computer-tile-ship">🚢</div>);
           } else {
             computerPieces.push(<div className="computer-tile" style={{ backgroundColor: 'grey' }}></div>);
           }
