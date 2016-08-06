@@ -122,10 +122,10 @@ var Battleship = React.createClass({
     if (this.state.showLeaderboard) {
       return (
         <div>
-          <button onClick={this.hideLeaderboard}>Hide leaderboard</button>
+          <button onClick={ this.hideLeaderboard }>Hide leaderboard</button>
           <ul>
             {this.state.leaderboard.map(function(listValue){
-              return <li>{listValue.email}  ({ listValue.time_took_to_win } sec)</li>;
+              return <li>{ listValue.email }  ({ listValue.time_took_to_win } sec)</li>;
             })}
           </ul>
         </div>
@@ -135,7 +135,7 @@ var Battleship = React.createClass({
     if (!this.state.loggedIn) {
       return (
         <div>
-          <button onClick={this.login}>Login</button>
+          <button onClick={ this.login }>Login</button>
         </div>
       );
     }
@@ -143,8 +143,8 @@ var Battleship = React.createClass({
     if (!this.state.playingAGame) {
       return (
         <div>
-          <button onClick={this.showLeaderboard}>Show leaderboard</button>
-          <button onClick={this.startANewGame}>Start a new game</button>
+          <button onClick={ this.showLeaderboard }>Show leaderboard</button>
+          <button onClick={ this.startANewGame }>Start a new game</button>
         </div>
       );
     }
@@ -153,19 +153,19 @@ var Battleship = React.createClass({
     for (var i=0; i<25; i++) {
       if (this.state.myTiles[i].visited) {
         if (this.state.myTiles[i].ship) {
-          pieces.push(<div className="player-tile-ship" style={{backgroundColor: 'red'}}>
-            <span style={{fontSize: "40px"}}>🚢</span>
+          pieces.push(<div className="player-tile-ship" style={{ backgroundColor: 'red' }}>
+            <span style={{ fontSize: "40px" }}>🚢</span>
           </div>);
         } else {
-          pieces.push(<div className="player-tile" style={{backgroundColor: 'grey'}}></div>);
+          pieces.push(<div className="player-tile" style={{ backgroundColor: 'grey' }}></div>);
         }
       } else {
         if (this.state.myTiles[i].ship) {
           pieces.push(<div className="player-tile-ship">
-            <span style={{fontSize: "40px"}}>🚢</span>
+            <span style={{ fontSize: "40px" }}>🚢</span>
           </div>);
         } else {
-          pieces.push(<div onClick={this.handleTileOnClick.bind(null, i)} className="player-tile"></div>);
+          pieces.push(<div onClick={ this.handleTileOnClick.bind(null, i) } className="player-tile"></div>);
         }
       }
     }
@@ -174,14 +174,14 @@ var Battleship = React.createClass({
       var computerPieces = [];
       for (var i=0; i<25; i++) {
         if (!this.state.computerTiles[i].visited) {
-          computerPieces.push(<div onClick={this.handleComputerTileOnClick.bind(null, i)} className="computer-tile"></div>);
+          computerPieces.push(<div onClick={ this.handleComputerTileOnClick.bind(null, i) } className="computer-tile"></div>);
         } else {
           if (this.state.computerTiles[i].ship) {
             computerPieces.push(<div className="computer-tile-ship">
-              <span style={{fontSize: "30px"}}>🚢</span>
+              <span style={{ fontSize: "30px" }}>🚢</span>
             </div>);
           } else {
-            computerPieces.push(<div className="computer-tile" style={{backgroundColor: 'grey'}}></div>);
+            computerPieces.push(<div className="computer-tile" style={{ backgroundColor: 'grey' }}></div>);
           }
         }
       }
@@ -189,11 +189,11 @@ var Battleship = React.createClass({
 
     return (
       <div>
-        <button onClick={this.showLeaderboard}>Show leaderboard</button>
+        <button onClick={ this.showLeaderboard }>Show leaderboard</button>
         
         { this.state.finished ? 
-          (<button onClick={this.startANewGame}>Start a new game</button>) : 
-          (<button onClick={this.destroyCurrentGame}>Destroy current game</button>) 
+          (<button onClick={ this.startANewGame }>Start a new game</button>) : 
+          (<button onClick={ this.destroyCurrentGame }>Destroy current game</button>) 
         }
 
         { this.state.finished && this.state.player_won ? 'The game is finished and you won!' : null }
