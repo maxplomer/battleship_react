@@ -97,10 +97,8 @@ var Battleship = React.createClass({
     }
   },
 
-  handleComputerTileOnClick: function(event) {
+  handleComputerTileOnClick: function(index) {
     if (!this.state.finished) {
-      var index = $(event.target).attr('value');
-
       $.ajax({
         url: getApiEndpoint() + 'games/' + this.state.gameID + '/bomb_computer?token=' + this.state.token,
         type: 'PATCH',
@@ -170,7 +168,7 @@ var Battleship = React.createClass({
             <span style={{fontSize: "40px"}}>🚢</span>
           </div>);
         } else {
-          pieces.push(<div value={i} onClick={this.handleTileOnClick.bind(null, i)} className="player-tile"></div>);
+          pieces.push(<div onClick={this.handleTileOnClick.bind(null, i)} className="player-tile"></div>);
         }
       }
     }
@@ -179,7 +177,7 @@ var Battleship = React.createClass({
       var computerPieces = [];
       for (var i=0; i<25; i++) {
         if (!this.state.computerTiles[i].visited) {
-          computerPieces.push(<div value={i} onClick={this.handleComputerTileOnClick} className="computer-tile"></div>);
+          computerPieces.push(<div onClick={this.handleComputerTileOnClick.bind(null, i)} className="computer-tile"></div>);
         } else {
           if (this.state.computerTiles[i].ship) {
             computerPieces.push(<div className="computer-tile-ship">
